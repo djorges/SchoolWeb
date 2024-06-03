@@ -1,6 +1,7 @@
 package org.example.schoolweb.service;
 
 import org.example.schoolweb.entity.CourseEntity;
+import org.example.schoolweb.exception.EntityNotFoundException;
 import org.example.schoolweb.repository.ICourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,8 @@ public class CourseServiceImpl implements ICourseService{
     @Override
     @Transactional(readOnly = true)
     public CourseEntity findById(Long id) {
-        return repository.findById(id).orElseThrow(
-
+        return repository.findById(id).orElseThrow(()->
+            new EntityNotFoundException("Course with id " + id + " not found")
         );
     }
 
