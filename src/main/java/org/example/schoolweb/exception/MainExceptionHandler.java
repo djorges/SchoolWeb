@@ -9,11 +9,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler {
+public class MainExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ InvalidOperationException.class, EntityNotFoundException.class })
     protected ResponseEntity<Object> handleBadRequest(
-            Exception ex, WebRequest request
+        Exception ex, WebRequest request
     ) {
         return handleExceptionInternal(
                 ex,
